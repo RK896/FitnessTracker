@@ -4,7 +4,6 @@ import com.fitness.tracker.model.User;
 import com.fitness.tracker.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service
