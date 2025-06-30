@@ -1,0 +1,75 @@
+function AddWorkoutForm({ onAddWorkout }) {
+  const [formData, setFormData] = useState({
+    date: "",
+    type: "",
+    duration: "",
+    caloriesBurned: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddWorkout(formData);
+    setFormData({
+      date: "",
+      type: "",
+      duration: "",
+      feelScore: "",
+      notes: "",
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        name="date"
+        type="date"
+        value={formData.date}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="type"
+        type="text"
+        placeholder="Workout Type"
+        value={formData.type}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="duration"
+        type="number"
+        placeholder="Duration (minutes)"
+        value={formData.duration}
+        onChange={handleChange}
+        required
+        min="1"
+      />
+      <input
+        name="feelScore"
+        type="number"
+        placeholder="Feel Score"
+        value={formData.feelScore}
+        onChange={handleChange}
+        required
+        min="1"
+        max="10"
+      />
+      <input
+        name="notes"
+        type="text"
+        placeholder="Notes"
+        value={formData.notes}
+        onChange={handleChange}
+        required
+      />
+      <button type="submit">Add Workout</button>
+    </form>
+  );
+}
+
+export default AddWorkoutForm;

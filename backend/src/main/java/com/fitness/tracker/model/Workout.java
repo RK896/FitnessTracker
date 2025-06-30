@@ -14,6 +14,7 @@ public class Workout {
     private int duration;
     private int feelScore;
     private LocalDate date;
+    private String notes;
 
 
     @ManyToOne
@@ -23,14 +24,17 @@ public class Workout {
     public Workout() {
     }
 
-    public Workout(long id, String type, int duration, int feelScore, LocalDate date, User user) {
+    public Workout(long id, String type, int duration, int feelScore, LocalDate date, User user, String notes) {
         this.id = id;
         this.type = type;
         this.duration = duration;
         this.feelScore = feelScore;
         this.date = date;
         this.user = user;
+        this.notes = notes;
     }
+
+
 
     public User getUser() {
         return user;
@@ -75,4 +79,13 @@ public class Workout {
     public long getId() {
         return id;
     }
+
+    public String getNotes(){
+        return notes;
+    }
+
+    public void setNotes(String notes){
+        this.notes = notes;
+    }
+
 }

@@ -20,6 +20,10 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      setMessage("Passwords do not match.");
+      return;
+    }
     try {
       await API.post("users/register", formData);
       setMessage("Registered successfully! Please log in.");
@@ -59,8 +63,8 @@ function Register() {
         <br />
         <input
           name="email"
-          type="text"
-          placeholder="email"
+          type="email"
+          placeholder="Email"
           value={formData.email}
           onChange={handleChange}
           required
