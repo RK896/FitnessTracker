@@ -1,5 +1,5 @@
 package com.fitness.tracker.controller;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.fitness.tracker.model.User;
 import com.fitness.tracker.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     private final UserService userService;
 

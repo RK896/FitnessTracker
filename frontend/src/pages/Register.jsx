@@ -21,7 +21,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await API.post("/register", formData);
+      await API.post("users/register", formData);
       setMessage("Registered successfully! Please log in.");
       setFormData({
         email: "",
@@ -31,7 +31,15 @@ function Register() {
       });
     } catch (error) {
       console.error("Error registering:", error);
-      setMessage("Registration failed. Please try again.");
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        setMessage(
+          error.response.data.message ||
+            "Registration failed. Please try again."
+        );
+      } else {
+        setMessage("Registration failed. Please try again.");
+      }
     }
   };
 
